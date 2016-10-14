@@ -27,15 +27,22 @@ $(document).ready(function(){
 		});
 	
 	//end point successfully reached
-	$("#end").click(function(){
+	$("#end").on('mouseover',function(evt){
+		if(evt.offsetX < 20){// div width is 40
 			var boundary = $(".boundary").css("background-color");
 			 if(start_clicked && !wall_touched){
 					tell("<-- YOU WIN!!! -->", "green");
 					state_complete = true;
 					restart();
-				 }                                                                                                                                                                                                                                                                                                                                                                       
+				 }
+		}				 
+		else{
+			restart();
+			tell("You have to go through the maze instead :)","blue");
+		}
 		});
 		
+	//reset canvas	
 	function restart(){
 			$(".boundary").css({"background-color":"#eeeeee"});
 				$("#start").css({"border":"1px solid black"});
@@ -47,6 +54,7 @@ $(document).ready(function(){
 					}
 				tell(dflt_msg,"black");
 		}
+	//display status in html 
 	function tell(msg, col){
 			$("#status").html(msg);
 			$("#status").css({"color": col});
