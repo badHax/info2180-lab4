@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
 	$(".boundary").mouseover(function red(){
-			$(this).css({"background-color":"red"});
+			$(".boundary").css({"background-color":"red"});//changed
 		});
 });
